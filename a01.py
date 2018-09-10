@@ -36,17 +36,17 @@ e = 0.01
 
 for xi in x:
 
-	i = [xi]
+	i = [None,xi]
 	k = 1
 
-	i[k+1] = i[k] + (1/k)*i[k]
+	i.append(i[k] + (1/k)*i[k])
 
 	k = k + 1
 
 	while LA.norm(i[k] - i[k-1],ord=2) > e or K < 10000:
 
 
-		i[k+1] = i[k] + (1/k)*i[k]
+		i.append(i[k] + (1/k)*i[k])
 
 		k = k + 1
 
@@ -58,20 +58,21 @@ print(X1)
 
 for xi in x:
 
-	i = [xi]
+	i = [None,xi]
 	k = 1
 
-	i[k+1] = i[k] - (1/k)*i[k]
+	i.append(i[k] - (1/k)*i[k])
 
 	k = k + 1
 
 	while LA.norm(i[k] - i[k-1],ord=2) > e or K < 10000:
 
 
-		i[k+1] = i[k] - (1/k)*i[k]
+		i.append(i[k] - (1/k)*i[k])
 
 		k = k + 1
 
 	X2.append(i)
 
 print(X2)
+
